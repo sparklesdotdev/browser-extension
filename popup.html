@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sparkles Wallpapers</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <img
+        class="brand-logo"
+        src="assets/brand/sparklesdev-logo.svg"
+        alt="Sparkles.dev"
+      />
+      <span class="sparkle" aria-hidden="true">✦</span>
+      <p>Make every new tab a little more brilliant.</p>
+    </header>
+
+    <main>
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Your backdrop</p>
+          <h1>Pick a mood</h1>
+        </div>
+        <span id="selection-label" class="selection-label"></span>
+      </div>
+
+      <div id="wallpaper-grid" class="wallpaper-grid"></div>
+
+      <button id="random-mode" class="random-option" type="button">
+        <span class="random-icon" aria-hidden="true">✦</span>
+        <span>
+          <strong>Surprise me</strong>
+          <small>A new pick on every tab</small>
+        </span>
+        <span class="check" aria-hidden="true"></span>
+      </button>
+
+      <button id="open-tab" class="primary-button" type="button">
+        Open a fresh tab
+        <svg viewBox="0 0 20 20" aria-hidden="true">
+          <path d="M10 3v14M3 10h14" />
+        </svg>
+      </button>
+    </main>
+
+    <footer>
+      <a href="https://sparkles.dev" target="_blank" rel="noreferrer">
+        Visit sparkles.dev
+        <svg viewBox="0 0 20 20" aria-hidden="true">
+          <path d="M5 15 15 5M7 5h8v8" />
+        </svg>
+      </a>
+      <span>Made with ✦</span>
+    </footer>
+
+    <script type="module" src="popup.js"></script>
+  </body>
+</html>

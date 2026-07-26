@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Sparkles Wallpapers</title>
+    <link rel="stylesheet" href="newtab.css" />
+  </head>
+  <body>
+    <img id="wallpaper" class="wallpaper" alt="" />
+    <div class="vignette" aria-hidden="true"></div>
+
+    <header class="topbar">
+      <a
+        class="brand-link"
+        href="https://sparkles.dev"
+        target="_blank"
+        rel="noreferrer"
+        aria-label="Visit Sparkles.dev"
+      >
+        <img src="assets/brand/sparklesdev-logo.svg" alt="Sparkles.dev" />
+      </a>
+
+      <nav class="actions" aria-label="Wallpaper controls">
+        <button class="icon-button" id="shuffle" type="button">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M16 3h5v5M4 20 21 3M21 16v5h-5M15 15l6 6M4 4l5 5" />
+          </svg>
+          <span>Shuffle</span>
+        </button>
+        <button class="icon-button" id="picker-toggle" type="button">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="3" y="3" width="7" height="7" rx="1" />
+            <rect x="14" y="3" width="7" height="7" rx="1" />
+            <rect x="3" y="14" width="7" height="7" rx="1" />
+            <rect x="14" y="14" width="7" height="7" rx="1" />
+          </svg>
+          <span>Choose</span>
+        </button>
+      </nav>
+    </header>
+
+    <main class="newtab-content">
+      <section class="moment" aria-label="Current time and date">
+        <p class="eyebrow">Make today sparkle</p>
+        <time id="clock" class="clock">00:00</time>
+        <p id="date" class="date"></p>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="wallpaper-caption">
+        <span class="caption-dot" aria-hidden="true"></span>
+        <span id="wallpaper-name">Sparkles wallpaper</span>
+      </div>
+      <a href="https://sparkles.dev" target="_blank" rel="noreferrer">
+        Build something brilliant
+        <svg viewBox="0 0 20 20" aria-hidden="true">
+          <path d="M5 15 15 5M7 5h8v8" />
+        </svg>
+      </a>
+    </footer>
+
+    <dialog id="picker" class="picker">
+      <form method="dialog" class="picker-shell">
+        <div class="picker-header">
+          <div>
+            <p class="eyebrow">Pick your mood</p>
+            <h1>Choose a wallpaper</h1>
+          </div>
+          <button class="close-button" value="cancel" aria-label="Close wallpaper picker">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="m6 6 12 12M18 6 6 18" />
+            </svg>
+          </button>
+        </div>
+        <div id="picker-grid" class="picker-grid"></div>
+        <button id="random-mode" class="random-button" value="cancel" type="button">
+          <span class="random-icon" aria-hidden="true">✦</span>
+          <span>
+            <strong>Surprise me every time</strong>
+            <small>A different wallpaper on every fresh tab</small>
+          </span>
+          <span class="check" aria-hidden="true"></span>
+        </button>
+      </form>
+    </dialog>
+
+    <script type="module" src="newtab.js"></script>
+  </body>
+</html>
