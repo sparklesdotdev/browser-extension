@@ -6,6 +6,7 @@
   "description": "A playful Sparkles.dev wallpaper extension for Chrome.",
   "scripts": {
     "test": "node --test",
-    "validate": "node scripts/validate.mjs"
+    "validate": "node scripts/validate.mjs",
+    "package:webstore": "bash scripts/package-webstore.sh"
   }
 }

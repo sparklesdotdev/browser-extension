@@ -35,6 +35,14 @@ npm test
 npm run validate
 ```
 
+Create a clean Chrome Web Store package:
+
+```sh
+npm run package:webstore
+```
+
+Store listing copy and exact-dimension artwork live in [`store/`](store/).
+
 ## Wallpaper provenance
 
 The four wallpapers were generated with the Higgsfield CLI using Nano Banana 2
