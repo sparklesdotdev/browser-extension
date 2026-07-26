@@ -70,6 +70,7 @@ No account or test credentials are required.
 
 ## Listing assets
 
-- `screenshot-new-tab.png` — 1280×800
+- `store-icon-green.png` — 128×128
+- `screenshot-new-tab-rgb.png` — 1280×800 (24-bit RGB)
 - `promo-small.png` — 440×280
 - `promo-marquee.png` — 1400×560
