@@ -7,10 +7,17 @@ name: Auto-approve
 # pull_request_target (not pull_request): runs from the default branch, so
 # existing feature branches get approved without rebasing this file in.
 # Safe: we never check out PR code; we only call `gh pr review --approve`.
+# workflow_dispatch: backfill already-open PRs.
 
 on:
   pull_request_target:
     types: [opened, reopened, synchronize, ready_for_review]
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: PR number to approve
+        required: true
+        type: string
 
 permissions:
   pull-requests: write
@@ -19,14 +26,31 @@ permissions:
 jobs:
   approve:
     if: >-
-      github.event.pull_request.draft == false
-      && github.event.pull_request.user.login != 'github-actions[bot]'
+      github.event_name == 'workflow_dispatch'
+      || (
+        github.event.pull_request.draft == false
+        && github.event.pull_request.user.login != 'github-actions[bot]'
+      )
     runs-on: ubuntu-latest
     steps:
       - name: Approve as github-actions
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PR: ${{ github.event.pull_request.number }}
+          PR: ${{ github.event.pull_request.number || inputs.pr_number }}
           REPO: ${{ github.repository }}
         run: |
+          if [ -z "$PR" ]; then
+            echo "No PR number"
+            exit 1
+          fi
+          AUTHOR=$(gh api "repos/$REPO/pulls/$PR" --jq .user.login)
+          DRAFT=$(gh api "repos/$REPO/pulls/$PR" --jq .draft)
+          if [ "$AUTHOR" = "github-actions[bot]" ]; then
+            echo "Skip: would be self-approval"
+            exit 0
+          fi
+          if [ "$DRAFT" = "true" ]; then
+            echo "Skip: draft"
+            exit 0
+          fi
           gh pr review "$PR" --repo "$REPO" --approve --body "Auto-approved (non-author bot). Merge when ready — no second human required."
