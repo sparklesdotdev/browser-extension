@@ -3,9 +3,13 @@ name: Auto-approve
 # Non-author bot approval so Dan/James can merge their own PRs.
 # Vanta still requires: 1 review on default branch + enforce_admins.
 # github-actions[bot] != PR author, so GitHub + Vanta both count this.
+#
+# pull_request_target (not pull_request): runs from the default branch, so
+# existing feature branches get approved without rebasing this file in.
+# Safe: we never check out PR code; we only call `gh pr review --approve`.
 
 on:
-  pull_request:
+  pull_request_target:
     types: [opened, reopened, synchronize, ready_for_review]
 
 permissions:
